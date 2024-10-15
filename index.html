@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Character Selection</title>
+    <style>
+        .question-container {
+            display: none;
+        }
+        .active {
+            display: block;
+        }
+        button {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="form-container">
+        <!-- Question 1 -->
+        <div class="question-container active" id="question-1">
+            <h2>Character Selection</h2>
+            <label><input type="radio" name="character" value="Boy"> Boy</label><br>
+            <label><input type="radio" name="character" value="Girl"> Girl</label><br>
+            <button onclick="nextQuestion(1)">Next</button>
+        </div>
+
+        <!-- Question 2 -->
+        <div class="question-container" id="question-2">
+            <h2>Add Name</h2>
+            <input type="text" id="name" placeholder="Enter name"><br>
+            <button onclick="nextQuestion(2)">Next</button>
+        </div>
+
+        <!-- Question 3 -->
+        <div class="question-container" id="question-3">
+            <h2>Physical Characteristics</h2>
+            <p>Skin tone:</p>
+            <label><input type="radio" name="skinTone" value="Fair"> Fair</label><br>
+            <label><input type="radio" name="skinTone" value="Medium"> Medium</label><br>
+            <label><input type="radio" name="skinTone" value="Dark"> Dark</label><br>
+            <label><input type="radio" name="skinTone" value="Olive"> Olive</label><br>
+            <label><input type="radio" name="skinTone" value="Other"> Other (specify)</label><br>
+            <button onclick="nextQuestion(3)">Next</button>
+        </div>
+
+        <!-- Add more questions here following the same structure -->
+
+        <div id="completion-message" style="display: none;">
+            <h2>All questions completed!</h2>
+            <p>Thank you for your responses.</p>
+        </div>
+    </div>
+
+    <script>
+        function nextQuestion(currentQuestion) {
+            // Hide the current question
+            document.getElementById('question-' + currentQuestion).classList.remove('active');
+            
+            // Show the next question
+            var nextQuestion = currentQuestion + 1;
+            var nextElement = document.getElementById('question-' + nextQuestion);
+            if (nextElement) {
+                nextElement.classList.add('active');
+            } else {
+                // If no more questions, show the completion message
+                document.getElementById('completion-message').style.display = 'block';
+            }
+        }
+    </script>
+</body>
+</html>
